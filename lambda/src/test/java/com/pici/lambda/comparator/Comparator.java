@@ -1,5 +1,6 @@
 package com.pici.lambda.comparator;
 
+import lombok.Data;
 import org.junit.Test;
 import org.springframework.util.comparator.ComparableComparator;
 
@@ -49,15 +50,30 @@ public class Comparator {
     }
 
 }
-
+@Data
 class Person {
     private String name;
+    private int age;
+    private Double gz;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Person(String name, int age, Double gz) {
         this.name = name;
+        this.age = age;
+        this.gz = gz;
     }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Person() {
+    }
+}
+
+@Data
+class Datas {
+    private String name;
+    private int age;
+    private Double gz;
 }
