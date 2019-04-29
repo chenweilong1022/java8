@@ -1,12 +1,12 @@
 package com.pici.lambda.comparator;
 
 import org.junit.Test;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 过滤
@@ -95,6 +95,24 @@ public class Filter {
 
         List<Integer> collect = people.stream().filter(person -> person.getName().equals("a")).map(Person::getAge).collect(Collectors.toList());
         collect.forEach(System.out::println);
+
+    }
+
+    /**
+     * 过滤掉null的字符串
+     */
+    @Test
+    public void filterNull() {
+        Stream<String> a = Stream.of("a", "b", "c", null, "d", null, "f");
+//        List<String> collect = a.collect(Collectors.toList());
+//
+//        System.out.println(collect);
+//
+//        List<String> collect1 = a.filter(Objects::nonNull).collect(Collectors.toList());
+//        System.out.println(collect1);
+
+        List<String> collect = a.filter(s -> s != null).collect(Collectors.toList());
+        System.out.println(collect);
 
     }
 
